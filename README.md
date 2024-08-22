@@ -11,7 +11,7 @@ This repo contains some projects I ended up making during my learning journey on
 First thing we need to do is to check if our Ntdll is Hooked.
 
 ## Detecting Hooks
-We can do that by simply checking if the first 4 bytes of syscall stub is correct { 4C, 8B, D1, B0, ??, ??, ??, ??}.
+We can do that by simply checking if the first 4 bytes of syscall stub is correct { 4C, 8B, D1, B8, ??, ??, ??, ??}.
 
 This is how unhooked syscall stub should look like:
 

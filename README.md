@@ -15,7 +15,7 @@ We can do that by simply checking if the first 4 bytes of syscall stub is correc
 
 This is how unhooked syscall stub should look like:
 
-![Pasted image 20240810193023](https://github.com/user-attachments/assets/ddbe1f5c-29e4-49fb-b132-c95c65cf1d47)
+![image](https://github.com/user-attachments/assets/31be2ba5-5e3f-4e3c-9c97-0bf37d3a2f9c)
 
 Keep in mind that this method will generate some false positives:
 

@@ -26,6 +26,14 @@ If we confirm that our Ntdll is hooked, we can get a fresh copy of Ntdll and rep
 
 ![](https://www.ired.team/~gitbook/image?url=https%3A%2F%2F386337598-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-legacy-files%2Fo%2Fassets%252F-LFEMnER3fywgFHoroYn%252F-M9b77N-cstE2jRzZI4M%252F-M9b7TdH_eS5azVO-Vxe%252Fimage.png%3Falt%3Dmedia%26token%3D3f4c233b-0388-4c0c-9801-ab20b472ec38&width=768&dpr=4&quality=100&sign=d8226aad&sv=1)
 
+# Demo
+### Hooks detected
+
+![Pasted image 20240816160540](https://github.com/user-attachments/assets/a4f2607b-abac-4e03-84f0-3b6ea98e57a6)
+
+### Hooks Removed
+![Pasted image 20240816160635](https://github.com/user-attachments/assets/dde94410-5b42-442f-b826-49234a79d70c)
+
 # Resources:
 https://www.ired.team/offensive-security/defense-evasion/how-to-unhook-a-dll-using-c++
 

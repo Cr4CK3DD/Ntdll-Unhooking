@@ -24,7 +24,7 @@ BOOL IsHooked(HANDLE hDll, PCHAR pFunctionName)
 
 	pFunctionAddress = (PBYTE)GetProcAddress(hDll, pFunctionName);
 	if (pFunctionAddress == NULL) {
-		return TRUE;
+		return (TRUE);
 	}
 
 	if (*pFunctionAddress == 0x4C && *(pFunctionAddress + 1) == 0x8B && *(pFunctionAddress + 2) == 0xD1 &&	// mov r10, rcx
@@ -39,27 +39,26 @@ BOOL IsHooked(HANDLE hDll, PCHAR pFunctionName)
 BOOL NtdllPatcher(HANDLE hDll, PVOID pBuffer)
 {
 	DWORD	oldProtec = 0;
-	DWORD	Result = FALSE;
 
 	PIMAGE_SECTION_HEADER HookedSection = NULL;
-	PIMAGE_SECTION_HEADER CleanSection = NULL;
+	PIMAGE_SECTION_HEADER CleanSection  = NULL;
 
 	HookedSection = GetSection(hDll, ".text");
-	CleanSection = GetSection((HMODULE)pBuffer, ".text");
+	CleanSection  = GetSection((HMODULE)pBuffer, ".text");
 
 	if (!VirtualProtect((BYTE*)hDll + HookedSection->VirtualAddress, CleanSection->SizeOfRawData, PAGE_EXECUTE_READWRITE, &oldProtec)) {
 		printf("\t[-] VirtualProtect Failed With: %d\n", GetLastError());
+		return (FALSE);
 	}
 
 	memcpy((BYTE*)hDll + HookedSection->VirtualAddress, (BYTE*)pBuffer + CleanSection->PointerToRawData, CleanSection->SizeOfRawData);
 
 	if (!VirtualProtect((BYTE*)hDll + HookedSection->VirtualAddress, CleanSection->SizeOfRawData, oldProtec, &oldProtec)) {
 		printf("\t[-] VirtualProtect Failed With: %d\n", GetLastError());
+		return (FALSE);
 	}
 
 	puts("[+] Hooks Removed!");
 
-	Result = TRUE;
-
-	return Result;
+	return (TRUE);
 }
